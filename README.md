@@ -81,4 +81,65 @@ Notice that after creating this test we did not have to add anything to the Tree
 testing. The business requires their own Tree model, and this is a great business logic test case to validate that the model the business requires is accurate.
 
 
-The last step would be to create the function tests and implement the functions into the class. We will come back to this step later.
+The last step would be to create the function tests and implement the functions into the class. This is the stem of the argument, will return later.
+
+```
+void testFindKey(Node root, int key) {
+	if(root == null)
+		assertTrue(false);
+	if (root.getKey() == key)
+		assertTrue(true);
+	if (root.getKey() < key)
+	{ // testing recursion
+		while (root != null) {
+			testFindKey(root.getRight(), key);
+		}
+	}
+	
+	while (root != null) {
+		testFindKey(root.getLeft(), key);
+	}
+	
+	assertTrue(false);
+}
+```
+
+And the implement:
+
+```
+public class PersonalTreeUtils {
+	public boolean findKey(Node root, int key) {
+		if(root == null)
+			return false;
+		if (root.getKey() == key)
+			return true;
+		
+		if (root.getKey() < key)
+		{
+			while (root != null) {
+				return findKey(root.getRight(), key);
+			}
+		}
+		
+		while (root != null) {
+			return findKey(root.getLeft(), key);
+		}
+		
+		return false;
+	}
+}
+```
+
+And here is the problem with TDD. In practice, we have done two foundational actions:
+- We have tested literally
+- We have tested business logic.
+
+In literal test cases, we test methods and components such as fail casese, common-sense attacks, and I/O errors. When put together, are we asking if the class works as intended, or asking if classes work as intended. When using TDD in OOP, we are essentially testing with extreme practices, but a lot of the code is redundant. Is it necessary to replicate the development environment into a test environment, just to replicate it in the QA environment, then duplicate it in the actual environment. You end up managaing 4 different branches, meaning documentation for Gitlab pulls, pushes, and merges, adding a additional layer of complexity and, in my opinion, adds to creeping tech debt, for managing a single style of data structure. 
+
+TDD sounds more appropriate in imperative-based design. Everything is a function. How do the functions order, how do the functions interact. These sound like business logic executions, of which you can test in both OOP and imperative designs. 
+
+If everything is a class, that means that business logic and interactions should be tested, not logic. When everything is a class, the logic needs to be tested. In imperative you are more likely to come across a function embedded within a function, both of which need to be tested separately as VALID CODE as well as ENTITIIES. Class design should not contain run-time errors, of which needs to be tested in imperative designs.
+
+When it comes to OOP, I believe that error handling, handling, is much more useful. Error handling lets you not what has not been implemented into the class. Compile-time checks do not need to be tested extremely as classes should not provide compile-time errors for a class is completed when initilaized empty. Functions should not be initialized empty as the whole test case can be completed before initializing an implementation. In OOP, you are virtually required to create the class first before testing whether or not it is valid, for a class is an established entity, not an anonymous function. Initialized empty. 
+
+TDD for imperative is a sanity/syntax check for declared behaviors. TDD for OOP is a sanity/syntax check for class behaviors?
