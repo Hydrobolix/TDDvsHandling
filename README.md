@@ -1,5 +1,5 @@
 # TDDvsHandling
-TDD in OOP seems redundant, Test Cases and Business Logic test cases make more sense.
+TDD in OOP seems redundant, defined error handling and Business Logic test cases make more sense.
 
 When completing TDD in OOP, you end with the converse argument, does the class work? Classes always work when designed properly. 
 Allowing an environment that makes arguments and code redundant is debt issue and would like to tackle this opinion with an example using a personalized BST. 
@@ -135,6 +135,94 @@ And here is the problem with TDD. In practice, we have done two foundational act
 - We have tested business logic.
 
 In literal test cases, we test methods and components such as fail casese, common-sense attacks, and I/O errors. When put together, are we asking if the class works as intended, or asking if classes work as intended. When using TDD in OOP, we are essentially testing with extreme practices, but a lot of the code is redundant. Is it necessary to replicate the development environment into a test environment, just to replicate it in the QA environment, then duplicate it in the actual environment. You end up managaing 4 different branches, meaning documentation for Gitlab pulls, pushes, and merges, adding a additional layer of complexity and, in my opinion, adds to creeping tech debt, for managing a single style of data structure. 
+
+Lets check another implementation of PersonalTree and PersonalTreeUtils using error handling:
+
+```
+public class PersonalTreeII {
+	Node root;
+	
+	public PersonalTreeII() throws Exception {
+		if (root != null) throw new Exception("PersonalTreeII default constructor error: root can not be initialized in this class.");
+		root = null;
+	}
+	
+	public Node getNode() throws Exception {
+		if (root != null) throw new Exception("PersonalTreeII getNode() error: root can not have a value.");
+		return root;
+	}
+}
+```
+
+```
+public class PersonalTreeUtilsII {
+	public boolean findKey(Node root, int key) throws Exception {
+		if(root == null)
+			throw new Exception("PersonalTreeUtilsII findKey() error: root can not be null.");
+		if (root.getKey() == key)
+			return true;
+		
+		if (root.getKey() < key)
+		{
+			while (root != null) {
+				return findKey(root.getRight(), key);
+			}
+		}
+		
+		while (root != null) {
+			return findKey(root.getLeft(), key);
+		}
+		
+		return false;
+	}
+}
+```
+
+Class, function, error description. But what about the business logic?
+
+```
+class PersonalTreeTestII {
+
+	@Test
+	void testPersonalTreeIIClass() {
+		fail("Not yet implemented");
+	}
+	
+	// void testIsValidNode() { }
+	
+	void testIsValidBST(Node node, int min, int max) {
+		if(node == null) assertTrue(true);
+		
+		if (node.getKey() < min || node.getKey() > max) assertTrue(false);
+		
+		
+		while (node != null) {
+			testIsValidBST(node.getLeft(), min, node.getKey() - 1);
+			testIsValidBST(node.getRight(), node.getKey() + 1, max);
+		}
+		
+		
+		assertTrue(true);
+	}
+		
+	
+	// test that PersonalTree can find a key
+	
+	// test that the PersonalTree can find and return a key
+	
+	// test that PersonalTree can insert a key
+	
+	// ..
+
+}
+```
+
+Error handling and Business logic test cases/suites. 
+- Uses descriptive exception handling vs test cases.
+- Still has fail-safe cases
+- Has business logic that is tested as a whole unit, or with associative test functions that prove the business logic. Mocks and stubs for server-request tests.
+- Dramatic cut-down on redundancy tests
+
 
 TDD sounds more appropriate in imperative-based design. Everything is a function. How do the functions order, how do the functions interact. These sound like business logic executions, of which you can test in both OOP and imperative designs. 
 
