@@ -10,7 +10,7 @@ import com.example.PersonalTree;
 class PersonalTreeTest {
 
 	@Test
-	void testClass() {
+	void testPersonalTreeClass() {
 		fail("Not yet implemented");
 	}
 	
