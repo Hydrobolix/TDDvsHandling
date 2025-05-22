@@ -133,7 +133,11 @@ And here is the problem with TDD. In practice, we have done two foundational act
 - We have tested literally
 - We have tested business logic.
 
-In literal test cases, we test methods and components such as fail casese, common-sense attacks, and I/O errors. When put together, are we asking if the class works as intended, or asking if classes work as intended. When using TDD in OOP, we are essentially testing with extreme practices, but a lot of the code is redundant. Is it necessary to replicate the development environment into a test environment, just to replicate it in the QA environment, then duplicate it in the actual environment. You end up managaing 4 different branches, meaning documentation for Gitlab pulls, pushes, and merges, adding a additional layer of complexity and, in my opinion, adds to creeping tech debt, for managing a single style of data structure. 
+In literal test cases, we test methods and components such as fail casese, common-sense attacks, and I/O errors. When put together, are we asking if the 
+class works as intended, or asking if classes work as intended. When using TDD in OOP, we are essentially testing with extreme practices, but a lot of 
+the code is redundant. Is it necessary to replicate the development environment into a test environment, just to replicate it in the QA environment, then 
+duplicate it in the actual environment. You end up managaing 4 different branches, meaning documentation for Gitlab pulls, pushes, and merges, adding an 
+additional layer of complexity and, in my opinion, adds to creeping tech debt, for managing a single style of data structure. 
 
 Lets check another implementation of PersonalTree and PersonalTreeUtils using error handling:
 
@@ -142,7 +146,8 @@ public class PersonalTreeII {
 	Node root;
 	
 	public PersonalTreeII() throws Exception {
-		if (root != null) throw new Exception("PersonalTreeII default constructor error: root can not be initialized in this class.");
+		if (root != null) throw new Exception("PersonalTreeII default constructor error: root can not be initialized
+							in this class.");
 		root = null;
 	}
 	
