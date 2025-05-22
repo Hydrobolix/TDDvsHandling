@@ -234,4 +234,4 @@ If everything is a class, that means that business logic and interactions should
 
 When it comes to OOP, I believe that error handling, handling, is much more useful. Error handling lets you not what has not been implemented into the class. Compile-time checks do not need to be tested extremely as classes should not provide compile-time errors for a class is completed when initilaized empty. Functions should not be initialized empty as the whole test case can be completed before initializing an implementation. In OOP, you are virtually required to create the class first before testing whether or not it is valid, for a class is an established entity, not an anonymous function. Initialized empty. 
 
-TDD for imperative is a sanity/syntax check for declared behaviors. TDD for OOP is a sanity/syntax check for class behaviors?
+TDD for imperative designs is a sanity/syntax check for declared/declaring behaviors. TDD for OOP designs is a sanity/syntax check for class behaviors?
