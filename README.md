@@ -10,7 +10,6 @@ When creating the base, you generally start with a test case, then implement the
 
 ```
 class PersonalTreeTest {
-
 	@Test
 	void testPersonalTreeClass() {
 		fail("Not yet implemented");
@@ -32,9 +31,9 @@ Let us continue with creating the ValidClass test. In this case, we create a Tre
 
 ```
 void testIsValidPersonalTree() {
-		// create PersonalTree class
-		PersonalTree tree = new PersonalTree();
-		assertEquals(tree, new PersonalTree());		
+	// create PersonalTree class
+	PersonalTree tree = new PersonalTree();
+	assertEquals(tree, new PersonalTree());		
 }
 ```
 
