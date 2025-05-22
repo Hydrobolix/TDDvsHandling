@@ -2,9 +2,9 @@
 TDD in OOP seems redundant, defined error handling and Business Logic test cases make more sense.
 
 When completing TDD in OOP, you end with the converse argument, does the class work? Classes always work when designed properly. 
-Allowing an environment that makes arguments and code redundant is debt issue and would like to tackle this opinion with an example using a personalized BST. 
+Allowing an environment that makes arguments and code redundant is a debt issue and I would like to tackle this opinion with an example using a personalized BST. 
 
-When creating the base, you generally start with a test case, then implement the code. Here, we want to create a PersonalTree class.
+When creating the code base, the base, you generally start with a test case in a test environment, the proto, then implement the code. Here, we want to create a PersonalTree class.
 
 
 
@@ -235,3 +235,5 @@ If everything is a class, that means that business logic and interactions should
 When it comes to OOP, I believe that error handling, handling, is much more useful. Error handling lets you not what has not been implemented into the class. Compile-time checks do not need to be tested extremely as classes should not provide compile-time errors for a class is completed when initilaized empty. Functions should not be initialized empty as the whole test case can be completed before initializing an implementation. In OOP, you are virtually required to create the class first before testing whether or not it is valid, for a class is an established entity, not an anonymous function. Initialized empty. 
 
 TDD for imperative designs is a sanity/syntax check for declared/declaring behaviors. TDD for OOP designs is a sanity/syntax check for class behaviors?
+
+Are we over-abusing the proxy design pattern in OOP ??
